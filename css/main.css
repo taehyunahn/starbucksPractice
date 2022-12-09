@@ -6,6 +6,7 @@ body {
   line-height: 1.4; /* 줄높이(행간) */
   font-family: 'Nanum Gothic', sans-serif;
 }
+
 img {
   display: block; /* image를 글자취급하지 않겠다. inline 요소 -> block 요소  */
 }
