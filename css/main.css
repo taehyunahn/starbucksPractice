@@ -6,28 +6,107 @@ body {
   line-height: 1.4; /* 줄높이(행간) */
   font-family: 'Nanum Gothic', sans-serif;
 }
-
 img {
   display: block; /* image를 글자취급하지 않겠다. inline 요소 -> block 요소  */
+}
+a {
+  text-decoration: none;
 }
 
 /* HEADER */
 header {
-  background-color: royalblue;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
 }
 header .inner {
   /* inner : 가운데 정렬해줄 수 있는 개념 */
   width: 1100px;
   height: 120px;
   margin: 0 auto; /* margin : 외부여백, 상하 : 0, 좌우 : auto(자동) */
-  background-color: orange;
+  position: relative;
 }
 header .logo {
   height: 75px;
+  position: absolute; /* 부모영역에도 꼭 position값이 있는지 확인해야 한다.*/
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+header .sub-menu {
   position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+}
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif; /*왼쪽 폰트가 없으면, 오른쪽 것 적용하라는 의미*/
+  display: flex;
+}
+header .sub-menu ul.menu li {
+  position: relative;
+}
+header .sub-menu ul.menu li::before {
+  /* :: 가상 요소선택자*/
+  content: '';
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute; /* diplay값이 block으로 바뀐다.*/
   top: 0;
   bottom: 0;
   margin: auto;
+}
+header .sub-menu ul.menu li:first-child::before {
+  /* :first-child 가상 요소선택자의 첫번째 갑*/
+  display: none;
+}
+
+header .sub-menu ul.menu li a {
+  font-size: 12px;
+  padding: 11px 16px;
+  display: block;
+  color: #656565;
+}
+header .sub-menu ul.menu li a:hover {
+  /* :hover 가상클래스 - 마우스를 가져갔을 때 */
+  color: #000;
+}
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+}
+header .sub-menu .search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width 0.4s; /* 0.4초 후에 원래상태로 돌아오게함*/
+}
+header .sub-menu .search input:focus {
+  /*포커스되었을때의 가상 클래스*/
+  width: 190px;
+  border-color: #669900;
+}
+header .sub-menu .search .material-icons {
+  height: 24px; /*아이콘의 폰트 크기와 동일하다*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px; /*부모요소의 맨 좌측에서 오른쪽 5px 위치*/
+  margin: auto;
+  transition: 0.4s;
+}
+header .sub-menu .search.focused .material-icons {
+  /*.search.focused는 붙어야 한다. 일치 선택자. 찾기의 포커스된 것*/
+  opacity: 0;
 }
 
 /* image 태그는 inline 요소 : 가로세로값 x, margin-pading의 값 x

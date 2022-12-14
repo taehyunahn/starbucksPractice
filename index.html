@@ -49,6 +49,8 @@
 
     <!-- css 파일 연결 -->
     <link rel="stylesheet" href="./css/main.css" />
+    <!-- js 파일 연결(defer-> 모든 코드 실행후 동작하도록) -->
+    <script defer src="./js/main.js"></script>
   </head>
   <body>
     <!-- HEADER -->
@@ -57,6 +59,27 @@
         <a href="/" class="logo">
           <img src="./images/starbucks_logo.png" alt="STARBUCKS" />
         </a>
+
+        <div class="sub-menu">
+          <ul class="menu">
+            <li>
+              <a href="/signin">Sign In</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">My Starbucks</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Customber Service & Ideas</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Find a Store </a>
+            </li>
+          </ul>
+          <div class="search">
+            <input type="text" />
+            <div class="material-icons">search</div>
+          </div>
+        </div>
       </div>
     </header>
   </body>
