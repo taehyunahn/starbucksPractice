@@ -12,18 +12,21 @@ img {
 a {
   text-decoration: none;
 }
+.inner {
+  width: 1100px;
+  margin: 0 auto; /*가운데 정렬*/
+  position: relative; /*위치상 부모요소가 될 수 있는 기준*/
+}
 
 /* HEADER */
 header {
   background-color: #f6f5f0;
   border-bottom: 1px solid #c8c8c8;
 }
-header .inner {
+header > .inner {
+  /* > header의 자식 요소인 inner의미 */
   /* inner : 가운데 정렬해줄 수 있는 개념 */
-  width: 1100px;
   height: 120px;
-  margin: 0 auto; /* margin : 외부여백, 상하 : 0, 좌우 : auto(자동) */
-  position: relative;
 }
 header .logo {
   height: 75px;
@@ -35,7 +38,7 @@ header .logo {
 }
 
 header .sub-menu {
-  position: absolute;
+  position: absolute; /*부모 위치를 기준으로 배치하겠다, 구조적인 부모에도 position: relative 설정이 되어있어야 한다.*/
   top: 10px;
   right: 0;
   display: flex;
@@ -102,13 +105,62 @@ header .sub-menu .search .material-icons {
   bottom: 0;
   right: 5px; /*부모요소의 맨 좌측에서 오른쪽 5px 위치*/
   margin: auto;
-  transition: 0.4s;
+  transition: 0.4s; /* all은 생략되어 있고, 0.4초 에니메이션 설정*/
 }
 header .sub-menu .search.focused .material-icons {
-  /*.search.focused는 붙어야 한다. 일치 선택자. 찾기의 포커스된 것*/
+  /*
+  .search.focused는 붙어야 한다. 일치 선택자. 찾기의 포커스된 것
+  focused가 되면 아이콘을 안보이게하겠다.
+  */
   opacity: 0;
 }
 
 /* image 태그는 inline 요소 : 가로세로값 x, margin-pading의 값 x
 baseline 글자의 기준선. inline 요소는 글자를 취급하는 요소
 baseline 아래쪽에 특정한 공간이 출력됨 */
+
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1; /*요소의 짜임순서(앞뒤)*/
+  display: flex; /*수평이 되게 만들어준다*/
+}
+
+header .main-menu .item {
+}
+
+header .main-menu .item .item__name {
+  padding: 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+header .main-menu .item:hover .item__name {
+  /*가상클래스를 item 자체로 포괄적으로*/
+  background-color: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0 0;
+}
+
+header .main-menu .item .item__contents {
+  width: 100%;
+  position: fixed; /*viewPort를 기준으로 한다*/
+  left: 0;
+  display: none;
+}
+
+header .main-menu .item:hover .item__contents {
+  /*hover : 마우스를 가져다대면 동작*/
+  display: block;
+}
+
+header .main-menu .item .item__contents .contents__menu {
+  background-color: red;
+  height: 200px;
+}
+
+header .main-menu .item .item__contents .contents__texture {
+  background-color: orange;
+  height: 100px;
+}
